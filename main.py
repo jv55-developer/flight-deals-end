@@ -4,17 +4,26 @@ from flight_search import FlightSearch
 # from notification_manager import NotificationManager
 
 print(f"Welcome to Jason's Flight Club.\nWe find the best flight deals and email you.")
-first_name = input(f"What is your first name?\n")
-last_name = input(f"What is your last name?\n")
-email = input(f"What is your email?\n")
-confirm_email = input(f"Type your email again.\n")
+not_matched = True
 
 
 # # From data_manager Class
 data = DataManager()
 # get_sheety_data = data.get_sheety_data()
 # sheety_data = data.sheety_data
-post_sheety_data = data.post_user_data(first_name, last_name, email)
+
+# Check if email matches
+while not_matched:
+    first_name = input(f"What is your first name?\n")
+    last_name = input(f"What is your last name?\n")
+    email = input(f"What is your email?\n")
+    confirm_email = input(f"Type your email again.\n")
+
+    if email == confirm_email:
+        post_sheety_data = data.post_user_data(first_name, last_name, email)
+        not_matched = False
+    else:
+        print("Email's do not match. Please re-enter your data.\n")
 #
 # # From flight_search Class
 # flight_search = FlightSearch()
